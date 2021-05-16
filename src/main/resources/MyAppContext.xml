@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="myInitMethod"
+       default-destroy-method="myDestroyMethod"
+       default-lazy-init="true">
+
+    <bean id="myProc" class="javabegin.spring.myrobospring.impls.MyProc">
+        <!--        <constructor-arg value="12"/>-->
+        <!--        <constructor-arg value="AMD"/>-->
+        <property name="cores" value="17"/>
+        <property name="firm" value="INTEL"/>
+    </bean>
+    <bean id="myWeapon" class="javabegin.spring.myrobospring.impls.MyWeapon"
+          p:color="BLACK"
+          p:year="1970"
+          lazy-init="true">
+        <constructor-arg value="Pistol"/>
+        <constructor-arg value="7"/>
+
+    </bean>
+    <bean id="myRobot" class="javabegin.spring.myrobospring.impls.MyRobot" scope="prototype">
+        <constructor-arg ref="myWeapon"/>
+        <constructor-arg ref="myProc"/>
+        <constructor-arg value="T1000"/>
+    </bean>
+    <bean id="beanRoboConveyor" class="javabegin.spring.myrobospring.impls.KiborgConveyor">
+        <lookup-method name="createKiborg" bean="myRobot"/>
+    </bean>
+</beans>
