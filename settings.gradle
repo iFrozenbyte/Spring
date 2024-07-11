@@ -1,0 +1,7 @@
+rootProject.name = 'planner-app'
+
+includeBuild 'config'
+includeBuild 'entity'
+includeBuild 'eureka'
+includeBuild 'gateway'
+includeBuild 'task'
